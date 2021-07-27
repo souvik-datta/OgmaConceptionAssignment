@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TabHost
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import com.souvik.assignmentogma.databinding.FragmentHomeBinding
 
 
@@ -31,6 +31,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fab.setOnClickListener{
             MainActivity.title = binding.etText.text.toString()
+            val tabs = (activity as MainActivity?)!!.findViewById<View>(R.id.tabLayout) as TabLayout
+            tabs.getTabAt(1)!!.select()
         }
     }
 }

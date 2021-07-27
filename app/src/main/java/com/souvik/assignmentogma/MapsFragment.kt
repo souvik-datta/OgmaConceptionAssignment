@@ -37,9 +37,6 @@ class MapsFragment : Fragment() {
         gMap = googleMap
         googleMap.isMyLocationEnabled = true
         permissionCheck()
-        /*val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
     }
 
     override fun onCreateView(
@@ -98,7 +95,7 @@ class MapsFragment : Fragment() {
                     "Latitude: ${locationResult.lastLocation.latitude} and Longitude: ${locationResult.lastLocation.longitude}"
                 )
                 if(marker == null)
-                    gMap?.addMarker(MarkerOptions().position(LatLng(locationResult.lastLocation.latitude,locationResult.lastLocation.longitude)).title(MainActivity.title))
+                   marker = gMap?.addMarker(MarkerOptions().position(LatLng(locationResult.lastLocation.latitude,locationResult.lastLocation.longitude)).title(MainActivity.title))
                 else
                     marker!!.title = MainActivity.title
                 gMap?.animateCamera(
@@ -107,7 +104,7 @@ class MapsFragment : Fragment() {
                     )
                 )
                 if(polygon == null)
-                    gMap!!.addCircle(
+                    polygon = gMap!!.addCircle(
                         CircleOptions()
                             .center(LatLng(locationResult.lastLocation.latitude,locationResult.lastLocation.longitude))
                             .radius(10.0)
